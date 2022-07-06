@@ -1,11 +1,14 @@
-from django.urls import path
-from . import views 
+from uuid import uuid4
 
-app_name="links"
-
-urlpatterns = [
-    path("create/", views.PostCreateApi.as_view(), name="api_create"),
-    path("update/<int:pk>", views.PostUpdateApi.as_view(), name="api_update"),
-    path("delete/<int:pk>", views.PostDeleteApi.as_view(), name="api_delete"),
-    path("", views.PostListApi.as_view(), name="api_list"),
-]
+def generate_random_id() -> str:
+    """
+    A function that generates a random 8 character string. 
+    Useful for creating random IDs for URLs and objects.
+    """
+    # Generate ID
+    id = str(uuid4())
+    
+    # Get the first 8 characters of the id
+    id = id[:8]
+    
+    return id
